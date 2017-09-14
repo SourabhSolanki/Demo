@@ -1,0 +1,23 @@
+<h1 id="head">Listing of Approved articles</h1>
+
+<table>
+  <tr  id="head">
+    <th > User Name</th><td></td>
+    <th>Article Title</th>
+    <th>Date of Article Created</th>
+  </tr>
+
+  <% @articles.each do |article| %>
+  <tr>
+    <%@user_name = User.find(article.user_id)%>
+    <td><%= @user_name.name + " " + @user_name.surname %></td><td></td>
+    <td><%= article.title %></td>
+    <td> <%=article.created_at.strftime("%d %B, %Y") %></td>
+    <td> <%= link_to 'View',show_approved_articles_user_article_path(@user_name.id, article.id) %>
+
+    </td>
+    
+  </tr>
+  <%end%>
+
+</table>

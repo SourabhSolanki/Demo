@@ -1,0 +1,31 @@
+<%= form_for(@user) do |f| %>
+  <%= f.label :name %>
+   <br>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :surname %>
+  <br>
+  <%= f.text_field :surname %>
+  <br>
+  <%= f.label :email %>
+  <br>
+  <%= f.email_field :email %>
+  <br>
+  <%= f.label :mobile %>
+  <br>
+  <%= f.text_field:mobile %>
+  <br>
+
+  <%= f.label :password %>
+  <br>
+  <%= f.password_field :password %>
+  <br>
+
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <br>
+  <%= f.password_field :password_confirmation %>
+  <br>
+  <br>
+  <%= f.submit "Create my account" %>
+<% end %>
+<%= link_to 'Back', login_path %>

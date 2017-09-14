@@ -1,0 +1,9 @@
+<%= form_for([@user,@article, @article.comments.build],:remote => true) do |f| %>
+  <p>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+

@@ -1,0 +1,30 @@
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+<%= link_to 'Back',  if @user.user? 
+                         user_home_user_path(params[:user_id])
+                    else
+                         admin_home_user_path(params[:user_id])
+                    end %>
+
+
+<%if @user.user? && @article.request_not_send?%>
+  <%= button_to "Request for approve", request_status_user_article_path(params[:user_id],params[:id]),:remote => true, class:'status' %>
+
+<%else %>
+  <%if @current_user.user? %>
+    <%= button_to "Request send",request_status_user_article_path(params[:user_id],params[:id]),disabled: true %>
+  <%end%>
+     
+  <%if @current_user.admin? && @article.request_send?%>
+
+    <%= button_to "Approve",approved_article_user_article_path(params[:user_id],params[:id]),:remote => true, class:'status_for_approve'%>
+    <%= button_to "Deny",deny_article_user_article_path(params[:user_id],params[:id]),:remote => true, class:'status_for_deny'%>
+  <%end%>
+
+<%end%>

@@ -1,0 +1,4 @@
+
+<%= button_to "Create New Article", new_user_article_path(params[:id]), method: :get %>
+<%= button_to "View My Articles",  user_articles_user_articles_path(params[:id]) , method: :get %>
+<%= button_to "View Approved Article",articles_list_of_approved_articles_path(), method: :get %>

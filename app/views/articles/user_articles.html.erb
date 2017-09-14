@@ -1,0 +1,30 @@
+<h1 id="head">Listing articles</h1>
+
+<table >
+  <tr id="head">
+    <th >Title</th>
+    <th>date of Article Created</th>
+    <th>Date of Update Article</th>
+    
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td> <%=article.created_at.strftime("%d %B, %Y") %></td>
+      <td> <%=article.updated_at.strftime("%d %B, %Y") %></td>
+     
+      <td><%= link_to 'Show',user_article_path(@user.id, article.id) %></td>
+      <td><%= link_to 'Destroy',user_article_path(@user.id, article.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Edit',edit_user_article_path(@user.id, article.id) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Back',  if @user.user? 
+                         user_home_user_path(params[:user_id])
+                    else
+                         admin_home_user_path(params[:user_id])
+                    end %>
