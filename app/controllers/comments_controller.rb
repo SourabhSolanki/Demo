@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
     if @comment.destroy
-      flash[:success] = "destory Sucessfully!"
+      # flash[:success] = "destory Sucessfully!"
       redirect_to show_approved_articles_user_article_path(@user,@article) 
     end
   end
