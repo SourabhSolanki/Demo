@@ -1,7 +1,7 @@
-<h1 id="head">Listing articles</h1>
+<h1>Listing articles</h1>
 
 <table >
-  <tr id="head">
+  <tr >
     <th >Title</th>
     <th>date of Article Created</th>
     <th>Date of Update Article</th>
@@ -19,6 +19,19 @@
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
       <td><%= link_to 'Edit',edit_user_article_path(@user.id, article.id) %></td>
+      <td>
+
+        <%if @user.user? && article.request_not_send?%>
+          <%= button_to "Request for approve", request_status_user_article_path(params[:user_id],article.id),:remote => true, class:'status' %>
+
+        <%else %>
+          <%if @current_user.user? %>
+            
+            <%= button_to "Request send",request_status_user_article_path(params[:user_id],article.id),disabled: true %>
+          <%end%>
+        <%end%>
+      </td>  
+       
     </tr>
   <% end %>
 </table>

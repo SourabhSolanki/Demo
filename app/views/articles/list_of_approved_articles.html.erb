@@ -4,7 +4,7 @@
   <tr  id="head">
     <th > User Name</th><td></td>
     <th>Article Title</th>
-    <th>Date of Article Created</th>
+    <th>Date of Article Creation</th>
   </tr>
 
   <% @articles.each do |article| %>
@@ -21,3 +21,5 @@
   <%end%>
 
 </table>
+
+<%= link_to 'Back', user_home_user_path(@current_user)  %>

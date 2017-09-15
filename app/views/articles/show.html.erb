@@ -6,11 +6,16 @@
   <strong>Text:</strong>
   <%= @article.text %>
 </p>
-<%= link_to 'Back',  if @user.user? 
-                         user_home_user_path(params[:user_id])
-                    else
-                         admin_home_user_path(params[:user_id])
-                    end %>
+
+
+<%if @current_user.admin? && @article.request_send?%>
+  <%= link_to 'Back',articles_list_of_requested_articles_path() %>
+<%else%>
+   <%= link_to 'Back', user_articles_user_articles_path(params[:user_id]) %>
+<%end%>
+
+
+
 
 
 <%if @user.user? && @article.request_not_send?%>
@@ -22,9 +27,10 @@
   <%end%>
      
   <%if @current_user.admin? && @article.request_send?%>
-
+    <div class="btn-group">
     <%= button_to "Approve",approved_article_user_article_path(params[:user_id],params[:id]),:remote => true, class:'status_for_approve'%>
     <%= button_to "Deny",deny_article_user_article_path(params[:user_id],params[:id]),:remote => true, class:'status_for_deny'%>
+    </div>
   <%end%>
 
 <%end%>

@@ -1,21 +1,21 @@
-
-<div class ="login">
-<p><%= flash[:error] unless flash[:error].blank? %></p>
-<h1 id="head">Log in</h1> 
+<div class="alert alert-danger">
+<%= flash[:error] %>
+</div>
+<h1>Log in</h1> 
 <%= form_for(:session, url: login_path) do |f| %>
 <%= f.label :email %>
 <br>
-<%= f.email_field :email %>
+<%= f.email_field :email,placeholder:"Enter Email"%>
 <br>
 <br>
 <%= f.label :password %>
 <br>
-<%= f.password_field :password %>
+<%= f.password_field :password ,placeholder:"Enter password"%>
 <br>
 <br>
-<%= f.submit "Log in" %>
+<%= f.submit "Log in",class:"btn btn-success" %>
 <% end %>
-<p id="footer">New user? <%= link_to "Sign up now!", signup_path %></p>
+<p>New user? <%= link_to "Sign up now!", signup_path %></p>
   
-</div>
+
  

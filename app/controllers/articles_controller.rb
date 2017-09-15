@@ -12,16 +12,14 @@ class ArticlesController < ApplicationController
  
   def create
     @user = User.find(params[:user_id])
-    article = @user.articles.create(article_params)
+    @article = @user.articles.new(article_params)
     
-    if !article.blank?
-      article.save 
+    if @article.save
       if @user[:role]=="admin"
         redirect_to admin_home_user_path(@user)
       else
         redirect_to user_home_user_path(@user)
-      end 
-
+      end
     else
       flash[:error] = "please enter Title and Text Both."
       render 'new'
