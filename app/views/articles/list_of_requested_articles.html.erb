@@ -1,6 +1,6 @@
 <h1>Listing of Requested articles</h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th > User Name</th><td> </td>
     <th >Article Title</th>
@@ -18,7 +18,9 @@
       <%if @current_user.admin? && article.request_send?%>
         <div class="btn-group">
         <%= button_to "Approve",approved_article_user_article_path(@user_name,article.id),:remote => true, class:'status_for_approve'%>
+        <% if  article.request_send? && !article.request_approved?%>
         <%= button_to "Deny",deny_article_user_article_path(@user_name,article.id),:remote => true, class:'status_for_deny'%>
+        <%end%>
       </div>
       <%end%>
     </td>

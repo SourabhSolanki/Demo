@@ -7,9 +7,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save 
-      redirect_to login_path
-    else
-      render 'new'
+      respond_to do |f|
+        f.html { redirect_to login_path }
+        f.json { render :json => @user }
+      end
     end
   end
 

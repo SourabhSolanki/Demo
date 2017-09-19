@@ -1,5 +1,6 @@
+
 <div class="alert alert-danger">
-<%= flash[:error] %>
+<%= flash[:error] unless flash[:error].blank? %>
 </div>
 <h1>Log in</h1> 
 <%= form_for(:session, url: login_path) do |f| %>

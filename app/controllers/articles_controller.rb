@@ -14,16 +14,21 @@ class ArticlesController < ApplicationController
     @user = User.find(params[:user_id])
     @article = @user.articles.new(article_params)
     
-    if @article.save
-      if @user[:role]=="admin"
-        redirect_to admin_home_user_path(@user)
+    if @current_user.present?
+      if @article.save
+        if @user[:role]=="admin"
+          redirect_to admin_home_user_path(@user)
+        else
+          redirect_to user_home_user_path(@user)
+        end
       else
-        redirect_to user_home_user_path(@user)
+        flash[:error] = "please enter Title and Text Both."
+        render 'new'
       end
     else
-      flash[:error] = "please enter Title and Text Both."
-      render 'new'
-    end
+      flash[:error] = "please login."
+      redirect_to  root_url
+    end    
   end
 
   def list_of_requested_articles
@@ -48,6 +53,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.js { render :layout=>false}
     end 
+    UserMailer.request_email(@user,@article).deliver
   end
 
   def approved_article
@@ -57,6 +63,9 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.js { render :layout=>false}
     end
+    
+    UserMailer.notification_eamil(@user,@article).deliver
+
   end
   
   def deny_article
@@ -66,19 +75,25 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.js { render :layout=>false}
     end
+    UserMailer.notification_email(@user,@article).deliver
   end
 
 
   def destroy
     @user = User.find(params[:user_id])
     @article = Article.find(params[:id])
-    @article.destroy
- 
-    if @user[:role]=="admin"
-      redirect_to admin_home_user_path(@user)
+    if @current_user.present?
+      @article.destroy
+      respond_to do |f|
+        f.html { redirect_to user_articles_user_articles_path(@user) }
+        f.js
+      end
     else
-      redirect_to user_home_user_path(@user)
-    end 
+      flash[:error] = "please Login."
+      redirect_to root_url
+    end  
+
+ 
   end
 
   def show_approved_articles

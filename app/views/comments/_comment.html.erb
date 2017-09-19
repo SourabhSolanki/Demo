@@ -9,8 +9,10 @@
   <%= comment.body %>
 </p>
 <p>
-   <strong>File:</strong>
+  <%if comment.avatar.present? %>
+  <strong>File:</strong>
   <%= link_to image_tag(comment.avatar.url(:med)), comment.avatar.url %>
+  <%end%>
 
 
 </p>
