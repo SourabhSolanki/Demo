@@ -92,8 +92,6 @@ class ArticlesController < ApplicationController
       flash[:error] = "please Login."
       redirect_to root_url
     end  
-
- 
   end
 
   def show_approved_articles

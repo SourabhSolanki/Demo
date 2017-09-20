@@ -1,31 +1,49 @@
 <%= form_for(@user,:remote => true)  do |f| %>
-  <%= f.label :name %>
-   <br>
-  <%= f.text_field :name ,placeholder:"Enter Name"%>
-  <br>
-  <%= f.label :surname  %>
-  <br>
-  <%= f.text_field :surname ,placeholder:"Enter Surname"%>
-  <br>
-  <%= f.label :email %>
-  <br>
-  <%= f.email_field :email,placeholder:"Enter Email" %>
-  <br>
-  <%= f.label :mobile %>
-  <br>
-  <%= f.text_field:mobile ,placeholder:"Enter mobile no." %>
-  <br>
+  <div class="form-group">
+    <%= f.label :name ,class:"col-md-4"%>
+    <div class="col-md-4">
+      <%= f.text_field :name ,placeholder:"Enter Name", class:"form-control"%>
+    </div>
+  </div>
 
-  <%= f.label :password %>
-  <br>
-  <%= f.password_field :password ,placeholder:"Enter password" %>
-  <br>
+  <div class="form-group">
+    <%= f.label :surname ,class:"col-md-4"%>
+    <div class="col-md-4">
+      <%= f.text_field :surname ,placeholder:"Enter  Surname", class:"form-control"%>
+    </div>
+  </div>
 
-  <%= f.label :password_confirmation, "Confirmation" %>
-  <br>
-  <%= f.password_field :password_confirmation %>
-  <br>
-  <br>
-  <%= f.submit "Create my account",class:"btn btn-success" %>
+  <div class="form-group">
+    <%= f.label :email ,class:"col-md-4"%>
+    <div class="col-md-4">
+      <%= f.email_field :email ,placeholder:"Enter Email", class:"form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :mobile,class:"col-md-4"%>
+    <div class="col-md-4">
+      <%= f.text_field :mobile ,placeholder:"Enter mobile no", class:"form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password  ,class:"col-md-4"%>
+    <div class="col-md-4">
+      <%= f.password_field :password  ,placeholder:"Enter password ", class:"form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation ,"Confirmation",class:"col-md-4"%>
+    <div class="col-md-4">
+      <%= f.password_field :password_confirmation ,placeholder:"Enter password ", class:"form-control"%>
+    </div>
+  </div>
+
+  
+  <div class="form-group">
+    <%= f.submit "Create my account",class:"btn btn-success col-md-4" %>
+  </div>
 <% end %>
 <%= link_to 'Back', login_path %>

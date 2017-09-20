@@ -7,9 +7,11 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%if @current_user.present?%>
-      
+    
  		<div align="right"><%= button_to 'Logout',logout_path, method: :delete, class:"btn btn-danger" %> </div>
+    <%= button_to 'Home',  user_home_user_path(@current_user), class:"btn btn-primary",method: :get %>
  		<%end%>
+
   </head>
 
   <body>
