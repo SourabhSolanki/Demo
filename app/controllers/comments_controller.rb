@@ -36,6 +36,14 @@ class CommentsController < ApplicationController
   end
 
 
+  def show
+    @user = User.find(params[:user_id])
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.find(params[:id])
+    
+  end
+
+
 
   private
   def comment_params

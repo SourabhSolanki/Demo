@@ -12,6 +12,7 @@ class UsersController < ApplicationController
         f.json { render :json => @user }
       end
     end
+    UserMailer.welcome_email(@user).deliver
   end
 
   def show

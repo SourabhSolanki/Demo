@@ -1,5 +1,7 @@
 <p><%= flash[:notice]  %></p>
+<%= link_to 'Back',articles_list_of_approved_articles_path()%>
 <p>
+
   <strong>Title:</strong>
   <%= @article.title %>
 </p>
@@ -12,8 +14,9 @@
 <div id='com'>
   <%= render 'comments/comment', comments: @article.comments %>
 </div>
+
+
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
 
 
-<%= link_to 'Back',articles_list_of_approved_articles_path()%>

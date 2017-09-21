@@ -1,30 +1,31 @@
- <% comments.each do |comment| %>
-<p>
-  <strong>Commenter:</strong>
-  <%@cname=User.find(comment.user_id)%>
-  <%=@cname.name + " " + @cname.surname%>
-</p>
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
-<p>
-  <%if comment.avatar.present? %>
-  <strong>File:</strong>
-  <%= link_to image_tag(comment.avatar.url(:med)), comment.avatar.url %>
-  <%end%>
+<% comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%@cname=User.find(comment.user_id)%>
+    <%=@cname.name + " " + @cname.surname%>
+  </p>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+  <p>
+    <%if comment.avatar.present? %>
+      <strong>File:</strong>
+      <%= link_to image_tag(comment.avatar.url(:med)), comment.avatar.url %>
+    <%end%>
+    <%@comment=comment%>
 
+    <%if comment.present?%>
+      <%= link_to 'reply', user_article_comment_path(@user, @article, @comment)%>
+    <%end%>
+  </p>
 
-</p>
-<p>
+  <p>
+    <%if @current_user.id == comment.user_id%>
 
-  <%if @current_user.id == comment.user_id%>
+      <%= link_to 'Destroy Comment',  user_article_comment_path(@user, @article, comment) ,method: :delete,data: { confirm: 'Are you sure?' } %>
+    <%end%>
 
-    <%= link_to 'Destroy Comment',  user_article_comment_path(@user, @article, comment) ,
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-
-  <%end%>
-</p>
+  </p>
 <%end%>
 

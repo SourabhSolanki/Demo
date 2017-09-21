@@ -1,0 +1,20 @@
+<p>
+  <strong>Commenter:</strong>
+    <%@cname=User.find(@comment.user_id)%>
+    <%=@cname.name + " " + @cname.surname%>
+</p>
+<p>
+  <strong>Comment:</strong>
+  <%= @comment.body %>
+</p>
+
+<div id='repshow'>
+  <%= render 'replies/reply', replies: @comment.replys %>
+</div>
+
+
+<h2>Create Reply:</h2>
+<%= render 'replies/form' %>
+
+
+<%= link_to 'Back', show_approved_articles_user_article_path(@user,@article)%>

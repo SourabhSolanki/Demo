@@ -21,8 +21,11 @@ Rails.application.routes.draw do
         post 'deny_article'
         get 'show_approved_articles'
       end 
-      resources :comments
+      resources :comments do
+        resources :replies
+      end   
     end
+
   end
 
   namespace :articles do

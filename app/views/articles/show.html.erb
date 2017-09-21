@@ -11,7 +11,7 @@
 <%if @current_user.admin? && @article.request_send?%>
   <%= link_to 'Back',articles_list_of_requested_articles_path() %>
 <%else%>
-   <%= link_to 'Back', user_articles_user_articles_path(params[:user_id]) %>
+  <%= link_to 'Back', user_articles_user_articles_path(params[:user_id]) %>
 <%end%>
 
 

@@ -38,8 +38,8 @@
   <% end %>
 </table>
 
-<%= link_to 'Back',  if @user.user? 
-                         user_home_user_path(params[:user_id])
-                    else
-                         admin_home_user_path(params[:user_id])
-                    end %>
+<%if @user.user?%>
+  <%= link_to 'Back',user_home_user_path(params[:user_id])%>
+<%else%>
+  <%= link_to 'Back',admin_home_user_path(params[:user_id])%>
+<%end %>

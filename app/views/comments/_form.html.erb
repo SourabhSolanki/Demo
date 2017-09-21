@@ -1,16 +1,25 @@
 <p><%= flash[:error] unless flash[:error].blank? %></p>
 <%= form_for([@user,@article, @article.comments.build],:remote => true,html: { multipart: true }) do |f| %>
+  <div class="form-group">
+    <div class="col-md-3">
+      <%= f.text_area :body ,class:"form-control"%>
+    </div>  
+  </div>
   <p>
-    <%= f.text_area :body %>
+    <div class="col-md-3">
+  	  <b>only pdf and Images are allowed.</b>
+    </div>
   </p>
-  <p>
-  	<b>only pdf and Images are allowed.</b>
-  </p>
-  <p>
-  	 <%= f.file_field :avatar %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="form-group">
+    <div class="col-md-3">
+  	  <%= f.file_field :avatar,class:".form-control-file" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-md-3">
+      <%= f.submit %>
+    </div>
+  </div>
 <% end %>
 

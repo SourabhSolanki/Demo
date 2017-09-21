@@ -21,6 +21,7 @@ class ArticlesController < ApplicationController
         else
           redirect_to user_home_user_path(@user)
         end
+        ArticleMailer.article_status(@user,@article).deliver
       else
         flash[:error] = "please enter Title and Text Both."
         render 'new'

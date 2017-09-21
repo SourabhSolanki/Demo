@@ -14,7 +14,6 @@
     <td><%= article.title %></td>
     <td> <%=article.created_at.strftime("%d %B, %Y") %></td>
     <td> <%= link_to 'View',show_approved_articles_user_article_path(@user_name.id, article.id) %>
-
     </td>
     
   </tr>
