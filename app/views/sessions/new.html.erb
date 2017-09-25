@@ -6,25 +6,30 @@
 <%= form_for(:session, url: login_path) do |f| %>
 
 	<div class="form-group">
-	  <%= f.label :email ,class:"col-md-4"%>
+	  <%= f.label :email, class:"col-md-1"%>
 	  <div class="col-md-3">
-	    <%= f.email_field :email ,placeholder:"Enter Email", class:"form-control"%>
+	    <%= f.email_field :email ,placeholder:"Enter Email", class:"form-control "%>
 	  </div>
 	</div>
-
+<br>
+<br>
 
   <div class="form-group">
-    <%= f.label :password  ,class:"col-md-4"%>
+    <%= f.label :password ,class:"col-md-1"%>
     <div class="col-md-3">
       <%= f.password_field :password  ,placeholder:"Enter password ", class:"form-control"%>
     </div>
   </div>
-
+<br>
+<br>
 
 	<div class="form-group">
-		<%= f.submit "Log in",class:"btn btn-success col-md-3" %>
+
+		<%= f.submit "Log in",class:"btn btn-success col-md-4" %>
 	</div>
 <% end %>
+<br>
+<br>
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   
 

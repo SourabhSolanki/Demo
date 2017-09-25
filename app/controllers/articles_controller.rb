@@ -118,7 +118,19 @@ class ArticlesController < ApplicationController
       flash.now[:error] = "Could not save client"
     end
   end
- 
+  
+  def like
+    @article = Article.find(params[:id])
+    @like = @article.likes.new
+    @like.user_id=@current_user.id
+    if @like.save
+      respond_to do |format|
+        format.html { redirect_to articles_list_of_approved_articles_path() }
+        format.js 
+      end
+    end  
+  end
+
   private
   def article_params
     params.require(:article).permit(:title, :text)
