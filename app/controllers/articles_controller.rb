@@ -129,7 +129,10 @@ class ArticlesController < ApplicationController
         format.js 
       end
     end  
+    
   end
+
+  
 
   private
   def article_params

@@ -16,22 +16,17 @@
     <td> <%= link_to 'View',show_approved_articles_user_article_path(@user_name.id, article.id) %>
     </td>
     <td>
-     
 
       <% @like=Like.where(:user_id => @current_user.id,:article_id =>article.id)%>  
       <%if !@like.present?%>
-       <span class="glyphicon glyphicon-thumbs-up"%></span> <%=button_to 'Like',like_user_article_path(@user_name.id,article.id),method: :get,:remote => true, id: 'likecount'%> 
+        <span class="glyphicon glyphicon-thumbs-up"%></span><%= article.likes.count%> <%=button_to 'Like',like_user_article_path(@user_name.id,article.id),method: :get,:remote => true, id: 'likecount',class:"btn btn-default btn-sm" %> 
 
       <%else%>
-        <span class="glyphicon glyphicon-thumbs-up"%></span><%=button_to 'Like',like_user_article_path(@user_name.id,article.id),method: :get,:remote => true, id: 'likecount',disabled: true %> 
 
-
+        <span class="glyphicon glyphicon-thumbs-up"%></span><%= article.likes.count%><%=button_to 'Liked',like_user_article_path(@user_name.id,article.id),method: :get,disabled: true,class:"btn btn-default btn-sm" %> 
+        
       <%end%>
-
-    </td>
-
-    
-    
+    </td> 
   </tr>
   <%end%>
 

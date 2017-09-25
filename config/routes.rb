@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         post 'deny_article'
         get 'show_approved_articles'
         get 'like'
+       
       end 
       resources :comments do
         resources :replies

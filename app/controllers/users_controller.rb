@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save 
       respond_to do |f|
         f.html { redirect_to login_path }
-        f.json { render :json => @user }
+       
       end
     end
     UserMailer.welcome_email(@user).deliver
