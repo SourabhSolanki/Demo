@@ -1,11 +1,11 @@
 <% comments.each do |comment| %>
   <p>
-    <strong>Commenter:</strong>
+    <strong style="color:#008080;">Commenter:</strong>
     <%@cname=User.find(comment.user_id)%>
     <%=@cname.name + " " + @cname.surname%>
   </p>
   <p>
-    <strong>Comment:</strong>
+    <strong style="color:#008080;">Comment:</strong>
     <%= comment.body %>
   </p>
   <p>
@@ -16,7 +16,7 @@
     <%@comment=comment%>
 
     <%if comment.present?%>
-      <%= link_to 'reply', user_article_comment_path(@user, @article, @comment)%>
+      <%= button_to 'reply', user_article_comment_path(@user, @article, @comment),method: :get, class:"btn btn-info"%>
     <%end%>
   </p>
 

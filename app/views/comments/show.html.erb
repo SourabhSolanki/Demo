@@ -1,3 +1,4 @@
+<%= link_to 'Back', show_approved_articles_user_article_path(@user,@article)%>
 <p>
   <strong>Commenter:</strong>
     <%@cname=User.find(@comment.user_id)%>
@@ -9,6 +10,7 @@
 </p>
 
 <div id='repshow'>
+	<h2><strong style="color: #008066;">Rplies</strong></h2>
   <%= render 'replies/reply', replies: @comment.replys %>
 </div>
 
@@ -17,4 +19,3 @@
 <%= render 'replies/form' %>
 
 
-<%= link_to 'Back', show_approved_articles_user_article_path(@user,@article)%>

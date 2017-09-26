@@ -1,17 +1,16 @@
-<div class="container">
+<div class="row"> 
+	<div class="btn-group">
+		<div class="col-md-4">
+	
+			<%= button_to "Create New Article", new_user_article_path(params[:id]), method: :get , class:"btn-default"%>
+			</div>
+		<div class="col-md-4">
 
-	<div class=" btn-group btn-group-justified">
-	
-		<%= button_to "Create New Article", new_user_article_path(params[:id]), method: :get , class:"btn-default"%>
-	
+			<%= button_to "View My Articles",  user_articles_user_articles_path(params[:id]) , method: :get , class:"btn-default"%>
+		</div>
+		<div class="col-md-4">
 		
-
-		<%= button_to "View My Articles",  user_articles_user_articles_path(params[:id]) , method: :get , class:"btn-default"%>
-		
-		
-		<%= button_to "View Approved Article",articles_list_of_approved_articles_path(), method: :get,class:"btn-default" %>
-	
+			<%= button_to "View Approved Article",articles_list_of_approved_articles_path(), method: :get,class:"btn-default" %>
+		</div>
 	</div>
-
 </div>
-
