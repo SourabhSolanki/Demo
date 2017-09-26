@@ -5,21 +5,27 @@
       <%= f.text_area :body ,class:"form-control"%>
     </div>  
   </div>
-  <p>
+  <br>
+  <br>
+  <br>
     <div class="col-md-3">
-  	  <b>only pdf and Images are allowed.</b>
+  	  <b style="color:#ff3300;">only pdf and Images are allowed.</b>
     </div>
-  </p>
+  <br>
+  <br>
+   
   <div class="form-group">
     <div class="col-md-3">
   	  <%= f.file_field :avatar,class:".form-control-file" %>
     </div>
   </div>
+  <br>
+  
+  
   
   <div class="form-group">
-    <div class="col-md-3">
-      <%= f.submit, class:"btn btn-default" %>
-    </div>
-  </div
+    <%= f.submit "create comment",class:"btn btn-default col-md-2"%>
+   
+  </div>
 <% end %>
 

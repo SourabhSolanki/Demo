@@ -13,10 +13,11 @@ class CommentsController < ApplicationController
           format.html { redirect_to show_approved_articles_user_article_path(@user,@article) }
           format.js 
         end
+        CommentMailer.comment_email(@user,@article,@comment).deliver
       else
         flash[:error] = "please enter Comment"  
       end
-      CommentMailer.comment_email(@user,@article,@comment).deliver
+    
     else
       flash[:notice] = "Please Login"
       redirect_to root_url

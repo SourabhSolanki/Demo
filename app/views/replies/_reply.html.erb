@@ -1,8 +1,8 @@
 
 <%replies.each do |reply| %>
   <p>
-    <h2 style="color: maroon;">Rplies</h2>
-    <strong>Reply By:</strong>
+ 
+    <strong style="color:#0066cc;">Reply By:</strong>
     <%@cname=User.find(reply.user_id)%>
     <%=@cname.name + " " + @cname.surname%>
   </p>
