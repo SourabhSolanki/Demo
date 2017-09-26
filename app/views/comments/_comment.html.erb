@@ -16,7 +16,11 @@
     <%@comment=comment%>
 
     <%if comment.present?%>
+<<<<<<< HEAD
       <%= button_to 'reply', user_article_comment_path(@user, @article, @comment),method: :get, class:"btn btn-info btn-xs"%>
+=======
+      <%= button_to 'reply', user_article_comment_path(@user, @article, @comment),method: :get, class:"btn btn-info"%>
+>>>>>>> a6913da77b6300f772590102506b800d602d6aba
     <%end%>
   </p>
 
