@@ -3,7 +3,8 @@
 <h1  style="color:#3399ff;" >New article</h1>
  
 <%= render 'form' %>
-
+<br>
+<br>
 <%if @user.user? %>
   <%= link_to 'Back', user_home_user_path(params[:user_id]) %>
 <%else%>

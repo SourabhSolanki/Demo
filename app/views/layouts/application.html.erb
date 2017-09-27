@@ -8,12 +8,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%if @current_user.present?%>
     
- 		<div  style=" background-color:black;text-align:right"><%= button_to 'Logout',logout_path, method: :delete, class:"btn btn-danger" %> 
-    <div style ="text-align:left">  
-    <%= button_to 'Home',  user_home_user_path(@current_user), class:"btn btn-primary",method: :get %>
-  </div>
- 		<%end%>
-    </div>
+      <div  style=" background-color:black;text-align:right"><%= button_to 'Logout',logout_path, method: :delete, class:"btn btn-danger" %> 
+        <div style ="text-align:left">
+          <%if  @current_user.user?%>
+            <%= button_to 'Home',  user_home_user_path(@current_user), class:"btn btn-primary",method: :get %>
+          <%else%>
+            <%= button_to 'Home',  admin_home_user_path(@current_user), class:"btn btn-primary",method: :get %>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+    
 
   </head>
 
