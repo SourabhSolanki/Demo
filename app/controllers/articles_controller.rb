@@ -76,7 +76,8 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.js { render :layout=>false}
     end
-    UserMailer.notification_email(@user,@article).deliver
+
+    UserMailer.notification_eamil(@user,@article).deliver
   end
 
 

@@ -8,29 +8,31 @@
 </p>
 
 
-<%if @current_user.admin? && @article.request_send?%>
-  <%= link_to 'Back',articles_list_of_requested_articles_path() %>
-<%else%>
-  <%= link_to 'Back', user_articles_user_articles_path(params[:user_id]) %>
-<%end%>
-
-
-
-
-
 <%if @user.user? && @article.request_not_send?%>
-  <%= button_to "Request for approve", request_status_user_article_path(params[:user_id],params[:id]),:remote => true, class:'status' %>
+  <%= button_to "Request for approve", request_status_user_article_path(params[:user_id],params[:id]),:remote => true, class:'status btn btn-info' %>
 
 <%else %>
   <%if @current_user.user? %>
-    <%= button_to "Request send",request_status_user_article_path(params[:user_id],params[:id]),disabled: true %>
+    <%= button_to "Request send",request_status_user_article_path(params[:user_id],params[:id]),disabled: true,class:"btn btn-warning" %>
   <%end%>
      
   <%if @current_user.admin? && @article.request_send?%>
     <div class="btn-group">
-    <%= button_to "Approve",approved_article_user_article_path(params[:user_id],params[:id]),:remote => true, class:'status_for_approve'%>
-    <%= button_to "Deny",deny_article_user_article_path(params[:user_id],params[:id]),:remote => true, class:'status_for_deny'%>
+    <%= button_to "Approve",approved_article_user_article_path(params[:user_id],params[:id]),:remote => true, class:'status_for_approve btn btn-success'%>
+    <br>
+
+    <%= button_to "Deny",deny_article_user_article_path(params[:user_id],params[:id]),:remote => true, class:'status_for_deny btn btn-danger'%>
     </div>
   <%end%>
 
+<%end%>
+
+<br>
+<br>
+
+
+<%if @current_user.admin? && @article.request_send?%>
+  <%= link_to 'Back',articles_list_of_requested_articles_path() %>
+<%else%>
+  <%= link_to 'Back', user_articles_user_articles_path(params[:user_id]) %>
 <%end%>

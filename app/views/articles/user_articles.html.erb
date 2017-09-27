@@ -28,12 +28,12 @@
       <td>
 
         <%if @user.user? && article.request_not_send?%>
-          <%= button_to "Request for approve", request_status_user_article_path(params[:user_id],article.id),:remote => true, class:'status' %>
+          <%= button_to "Request for approve", request_status_user_article_path(params[:user_id],article.id),:remote => true, class:'status btn btn-info' %>
 
         <%else %>
           <%if @current_user.user? %>
             
-            <%= button_to "Request send",request_status_user_article_path(params[:user_id],article.id),disabled: true %>
+            <%= button_to "Request send",request_status_user_article_path(params[:user_id],article.id),disabled: true ,class:"btn btn-warning"%>
           <%end%>
         <%end%>
       </td>  

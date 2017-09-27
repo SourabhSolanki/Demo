@@ -17,9 +17,9 @@
     <td>
       <%if @current_user.admin? && article.request_send?%>
         <div class="btn-group">
-        <%= button_to "Approve",approved_article_user_article_path(@user_name,article.id),:remote => true, class:'status_for_approve'%>
+        <%= button_to "Approve",approved_article_user_article_path(@user_name,article.id),:remote => true, class:'status_for_approve btn btn-success'%>
         <% if  article.request_send? && !article.request_approved?%>
-        <%= button_to "Deny",deny_article_user_article_path(@user_name,article.id),:remote => true, class:'status_for_deny'%>
+        <%= button_to "Deny",deny_article_user_article_path(@user_name,article.id),:remote => true, class:'status_for_deny btn btn-danger'%>
         <%end%>
       </div>
       <%end%>
